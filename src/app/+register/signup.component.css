@@ -1,0 +1,56 @@
+/*styles for home content only*/
+.body-wrapper {
+    margin-top : 70px;
+    background: url('/assets/img/neuestock-bible-vol-1-2.jpg') no-repeat center center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /*same height as jumbotron */
+    z-index: -1;
+}
+.jumbotron {
+  height: 100%;
+  color: rgb(39, 33, 33);
+  text-shadow: #444 0 1px 1px;
+  background: transparent;
+  text-align: center;
+  margin-top: 30px;
+}
+.btn-welcome {
+  background: transparent;
+  border-color: rgb(39, 33, 33);
+  color: rgb(39, 33, 33);
+  text-shadow: #444 0 1px 1px;
+}
+.signup {
+    text-align: right;
+    margin-right: 40%;
+    position: relative;
+    -webkit-animation-name: signupanimation; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: signupanimation;
+    animation-duration: 4s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes signupanimation {
+    0%   {left:40%; top:0%;}
+    50%  {left:0%; top:0%;}
+    100% {left:0%; top:0%;}
+}
+.signup_exit {
+    text-align: right;
+    margin-right: 40%;
+    position: relative;
+    -webkit-animation-name: signupexitanimation; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: signupexitanimation;
+    animation-duration: 4s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes signupexitanimation {
+    0%   {left:0%; top:0%;}
+    50%  {left:50%; top:0%;}
+    100% {left:50%; top:0%;}
+}
