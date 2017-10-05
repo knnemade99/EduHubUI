@@ -3,6 +3,7 @@ import {
   OnInit,
 } from '@angular/core';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 /**
 * We're loading this component asynchronously
 * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -54,19 +55,20 @@ console.log('`Login` component loaded asynchronously');
   `,
 })
 export class LoginComponent implements OnInit {
-    constructor(){
+    constructor(private router: Router){
       this.onLoginExit = this.onLoginExit.bind(this);
+      this.router = router;
     }
 
     public ngOnInit() {
       console.log('hello `Signup` component');
     }
-    onLoginExit(e){
+    onLoginExit(e){debugger;
       $("#logindiv").removeClass('login');
       $("#logindiv").addClass('login_exit');
-      setTimeout(function()
-      {
-        window.location = '#home';
-      }, 1000);
+      setTimeout(function(me)
+      {debugger;
+        me.router.navigateByUrl('home');
+      }, 1000 , this);
     }
 }

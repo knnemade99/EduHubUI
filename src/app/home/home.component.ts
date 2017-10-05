@@ -6,6 +6,8 @@ import {
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   /**
@@ -30,6 +32,9 @@ import { XLargeDirective } from './x-large';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+    constructor(private router: Router){
+      this.router = router;
+    }
     public ngOnInit() {
       console.log('hello `Signup` component');
     }
@@ -37,18 +42,18 @@ export class HomeComponent implements OnInit {
     onLoginClick(e){
       $("#homediv").removeClass('home');
       $("#homediv").addClass('home_exit');
-      setTimeout(function()
+      setTimeout(function(me)
       {
-        window.location = '#login';
-      }, 1000);
+        me.router.navigateByUrl('login');
+      }, 1000, this);
     }
 
     onSignupClick(e){
       $("#homediv").removeClass('home');
       $("#homediv").addClass('home_exit');
-      setTimeout(function()
+      setTimeout(function(me)
       {
-        window.location = '#register';
-      }, 1000);
+        me.router.navigateByUrl('register');
+      }, 1000, this);
     }
 }
