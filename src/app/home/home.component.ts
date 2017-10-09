@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       setTimeout(function(me)
       {
         me.router.navigateByUrl('login');
-      }, 1000, this);
+      }, 1200, this);
     }
 
     onSignupClick(e){
@@ -54,6 +54,6 @@ export class HomeComponent implements OnInit {
       setTimeout(function(me)
       {
         me.router.navigateByUrl('register');
-      }, 1000, this);
+      }, 1200, this);
     }
 }

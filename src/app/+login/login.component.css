@@ -45,12 +45,12 @@
     -webkit-animation-name: loginexitanimation; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
     animation-name: loginexitanimation;
-    animation-duration: 4s;
+    animation-duration: 6s;
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes loginexitanimation {
     0%   {right:0%; top:0%;}
-    50%  {right:50%; top:0%;}
-    100% {right:50%; top:0%;}
+    50%  {right:100%; top:0%;}
+    100% {right:100%; top:0%;}
 }

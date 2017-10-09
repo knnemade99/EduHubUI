@@ -70,6 +70,6 @@ export class SignupComponent implements OnInit {
     setTimeout(function(me)
     {
       me.router.navigateByUrl('home');
-    }, 1000, this);
+    }, 1200, this);
   }
 }

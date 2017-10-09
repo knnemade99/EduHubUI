@@ -43,12 +43,12 @@
     -webkit-animation-name: homeexitanimation; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
     animation-name: homeexitanimation;
-    animation-duration: 4s;
+    animation-duration: 6s;
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes homeexitanimation {
     0%   {top:0%;}
-    50%  {top:50%;}
-    100% {top:50%;}
+    50%  {top:100%;}
+    100% {top:100%;}
 }
