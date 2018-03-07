@@ -54,3 +54,16 @@
     50%  {right:100%; top:0%;}
     100% {right:100%; top:0%;}
 }
+
+.login_button{
+  width : 40%;
+  float : left;
+  pdding : 1%;
+}
+.reset_button{
+  width : 40%;
+  float : right;
+ pdding : 1%;
+}
+.field:after {
+}

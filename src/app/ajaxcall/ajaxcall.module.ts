@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import * as axios from 'axios'
+import axios from 'axios';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -13,13 +13,9 @@ import 'rxjs/add/operator/catch';
 console.log('`AjaxCall` bundle loaded asynchronously');
 
 @NgModule({
-  imports:[Http],
-  providers:[axios]
 })
 export class AjaxCallModule {
   constructor(){
-    this.http = Http;
-    this.axios = axios;
   }
   ajaxCall(ajaxConfig){
     let type = ajaxConfig.type ? ajaxConfig.type : 'GET';
@@ -41,7 +37,7 @@ export class AjaxCallModule {
       break;
 
       case 'POST':
-        return this.axios.post(url , payload , defaultConfig)
+        return axios.post(url , payload , defaultConfig)
         .then(function (response) {
                return response.data;
               })
@@ -52,7 +48,6 @@ export class AjaxCallModule {
           }
           return errorObj;
         });
-      break;
 
       case 'PUT':
       break;

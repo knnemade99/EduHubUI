@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import { AjaxCallModule } from '../ajaxcall/ajaxcall.module'
+import { mainReducer } from "../reducers/reducer";
+import { StoreModule } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -20,7 +23,9 @@ import 'rxjs/add/operator/catch';
 console.log('`Login` component loaded asynchronously');
 
 @Component({
-  imports:[  ],
+  imports:[
+    StoreModule.provideStore({mainReducer})
+  ]
   selector: 'login',
   styleUrls: [ './login.component.css' ],
   providers: [AjaxCallModule], // <-----
@@ -33,36 +38,38 @@ console.log('`Login` component loaded asynchronously');
               <h2 class="inline_block">Login</h2>
               <form role="form">
                 <div class="form-group row">
-                  <div class="input-group col-sm-5 col-xs-5 col-md-5">
+                  <div class="input-group col-sm-3 col-xs-3 col-md-3">
                     <input [(ngModel)]="username" name="username" type="text" class="form-control" placeholder="Login">
                     <label class="input-group-addon glyphicon glyphicon-user"></label>
                   </div>
-                  <div class="col-sm-7 col-xs-7 col-md-7">
+                  <div class="col-sm-9 col-xs-9 col-md-9">
                   </div>
                 </div> <!-- /.form-group -->
 
                 <div class="form-group row">
-                  <div class="input-group  col-sm-5 col-xs-5 col-md-5">
+                  <div class="input-group  col-sm-3 col-xs-3 col-md-3">
                     <input [(ngModel)]="password" name="password" type="password" class="form-control" placeholder="Password">
                     <label class="input-group-addon glyphicon glyphicon-lock"></label>
                   </div> <!-- /.input-group -->
-                  <div class="col-sm-7 col-xs-7 col-md-7">
+                  <div class="col-sm-9 col-xs-9 col-md-9">
                   </div>
                 </div> <!-- /.form-group -->
 
-                <div class="form-group row">
-                  <div class="input-group  col-sm-5 col-xs-5 col-md-5">
-                    <input (click)="login($event)" type="button" class="form-control" name="Submit">
-                  </div>
-                  <div class="col-sm-7 col-xs-7 col-md-7">
-                  </div>
-                </div>
-
-                <div class="checkbox">
+                <div class="checkbox row">
                   <label>
                     <input type="checkbox"> Remember me
                   </label>
                 </div> <!-- /.checkbox -->
+
+                <div class="form-group row">
+                  <div class="input-group  col-sm-3 col-xs-3 col-md-3">
+                    <button (click)="login($event)" class="btn btn-primary login_button form-control" name="Login">Login</button>
+                    <button class="btn btn-primary reset_button form-control" name="Login">Reset</button>
+                  </div>
+                  <div class="col-sm-9 col-xs-9 col-md-9">
+                  </div>
+                </div>
+
               </form>
             </div>
           </div>
@@ -105,6 +112,10 @@ export class LoginComponent implements OnInit {
         headers : {'authentication' : this.password}
       }
       this.ajaxCallModule.ajaxCall(ajaxConfig).then( (response) => {
+        if(response.message=='Success'){
+debugger;
+          this.store.dispatch({ type: AuthToken, payload: { response } });
+        }
       });
     }
 }
